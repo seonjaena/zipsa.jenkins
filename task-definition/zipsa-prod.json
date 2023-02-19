@@ -50,9 +50,6 @@
     "networkMode": "bridge",
     "volumes": [],
     "placementConstraints": [],
-    "compatibilities": [
-        "EC2"
-    ],
     "requiresCompatibilities": [
         "EC2"
     ],
