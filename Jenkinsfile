@@ -36,7 +36,6 @@ pipeline {
         stage('Create Task Definition') {
             steps {
                 script {
-                    taskDefinitionVersion = params.VERSION.replaceAll("\\.", "_")
                     sh """
                     aws ecs register-task-definition --cli-input-json file://${env.WORKSPACE}/task-definition/zipsa-prod.json
                     """
