@@ -20,6 +20,8 @@ pipeline {
                 script {
                     def taskDefinitionVersion = params.VERSION.replaceAll(".", "_")
                     sh """
+                    echo "version = ${params.VERSION}"
+                    echo "task version = ${taskDefinitionVersion}"
                     sed -i 's/image-version/${params.VERSION}/g' task-definition/zipsa-prod.json
                     sed -i 's/family-version/${taskDefinitionVersion}/g' task-definition/zipsa-prod.json
 
