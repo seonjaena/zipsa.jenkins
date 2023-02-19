@@ -36,14 +36,7 @@ pipeline {
                 script {
                     sh """
                     aws ecs create-service --cluster zipsa-prod --service-name zipsa-prod --task-definition zipsa-prod-${taskDefinitionVersion} \
-                    --load-balancers [
-                        {
-                            "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-2:886516594348:targetgroup/zipsa-target/b16493f3d28c4461", 
-                            "loadBalancerName": "alb-free", 
-                            "containerName": "zipsa-container", 
-                            "containerPort": 8080
-                        }
-                    ]
+                    --load-balancers [{"targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-2:886516594348:targetgroup/zipsa-target/b16493f3d28c4461", "loadBalancerName": "alb-free", "containerName": "zipsa-container", "containerPort": 8080}]
                     """
                 }
             }
