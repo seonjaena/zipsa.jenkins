@@ -20,8 +20,8 @@ pipeline {
                 script {
                     def taskDefinitionVersion = params.VERSION.replaceAll(".", "_")
                     sh """
-                    sed -i 's/image-version/${params.VERSION}/g ${zipsa-prod.json}'
-                    sed -i 's/family-version/${taskDefinitionVersion}/g ${zipsa-prod.json}'
+                    sed -i 's/image-version/${params.VERSION}/g task-definition/zipsa-prod.json'
+                    sed -i 's/family-version/${taskDefinitionVersion}/g task-definition/zipsa-prod.json'
 
                     aws ecs register-task-definition --cli-input-json file://${env.WORKSPACE}/task-definition/zipsa-prod.json
                     """
