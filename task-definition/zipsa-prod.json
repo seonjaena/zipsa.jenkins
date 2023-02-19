@@ -2,7 +2,7 @@
     "containerDefinitions": [
         {
             "name": "zipsa-prod",
-            "image": "886516594348.dkr.ecr.ap-northeast-2.amazonaws.com/ecr-free:image-version-docker-image",
+            "image": "886516594348.dkr.ecr.ap-northeast-2.amazonaws.com/ecr-free:image-version-branch-name",
             "cpu": 409,
             "memory": 409,
             "portMappings": [

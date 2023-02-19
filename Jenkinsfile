@@ -13,6 +13,7 @@ pipeline {
     parameters {
         choice(name: 'ENVIRONMENT', choices: ['prod', 'dev'], description: '')
         string(name: 'VERSION', defaultValue: '', description: '')
+        string(name: 'BRANCH_NAME', defaultValue: '', description: '')
     }
 
     stages {
@@ -24,6 +25,7 @@ pipeline {
                     sh """
                     sed -i 's/image-version/${params.VERSION}/g' task-definition/zipsa-prod.json
                     sed -i 's/family-version/${taskDefinitionVersion}/g' task-definition/zipsa-prod.json
+                    sed -i 's/branch-name/${params.BRANCH_NAME}/g' task-definition/zipsa-prod.json
 
                     sed -i 's/family-version/${taskDefinitionVersion}/g' service-definition/zipsa-prod.json
                     """
