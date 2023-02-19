@@ -18,7 +18,7 @@ pipeline {
         stage('Make Task Definition') {
             steps {
                 script {
-                    def taskDefinitionVersion = params.VERSION.replaceAll(".", "_")
+                    def taskDefinitionVersion = params.VERSION.replaceAll("\\.", "_")
                     sh """
                     echo "version = ${params.VERSION}"
                     echo "task version = ${taskDefinitionVersion}"
