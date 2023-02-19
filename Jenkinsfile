@@ -49,7 +49,7 @@ pipeline {
                     aws ecs create-service \
                     --cluster zipsa-prod \
                     --service-name zipsa-prod \
-                    --cli-input-json file://${env.WORKSPACE}/service-definition/service.json
+                    --cli-input-json file://${env.WORKSPACE}/service-definition/zipsa-prod.json
                     """
                 }
             }
