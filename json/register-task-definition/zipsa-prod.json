@@ -3,8 +3,8 @@
         {
             "name": "zipsa-prod",
             "image": "886516594348.dkr.ecr.ap-northeast-2.amazonaws.com/ecr-free:tag-name",
-            "cpu": 400,
-            "memory": 400,
+            "cpu": 850,
+            "memory": 350,
             "portMappings": [
                 {
                     "name": "zipsa-prod-8080-tcp",
@@ -53,8 +53,8 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "cpu": "490",
-    "memory": "490",
+    "cpu": "1000",
+    "memory": "450",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
