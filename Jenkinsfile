@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    sed -i 's/tag-name/${params.TAG_NAME}/g' task-definition/zipsa-prod.json
+                    sed -i 's/tag-name/${params.TAG_NAME}/g' json/register-task-definition/zipsa-prod.json
                     """
                 }
             }
