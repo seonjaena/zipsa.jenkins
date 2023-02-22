@@ -12,6 +12,10 @@ pipeline {
         choice(name: 'ENVIRONMENT', choices: ['prod', 'dev'], description: '')
         choice(name: 'SERVICE', choices: ['zipsa'], description: '')
         string(name: 'TAG_NAME', defaultValue: '', description: '')
+
+        booleanParam(name: 'REGISTER_TASK_DEFINITION', defaultValue: true, description: '')
+        booleanParam(name: 'CREATE_NEW_SERVICE', defaultValue: false, description: '')
+        booleanParam(name: 'UPDATE_SERVICE', defaultValue: true, description: '')
     }
 
     stages {
@@ -26,7 +30,12 @@ pipeline {
             }
         }
 
-        stage('Create Task Definition') {
+        stage('Register Task Definition') {
+            when {
+                expression {
+                    params.REGISTER_TASK_DEFINITION
+                }
+            }
             steps {
                 script {
                     sh """
@@ -37,6 +46,11 @@ pipeline {
         }
 
         stage('Create Service') {
+            when {
+                expression {
+                    params.CREATE_NEW_SERVICE
+                }
+            }
             steps {
                 script {
                     sh """
@@ -47,6 +61,11 @@ pipeline {
         }
 
         stage('Update Service') {
+            when {
+                expression {
+                    params.UPDATE_SERVICE
+                }
+            }
             steps {
                 script {
                     sh """
