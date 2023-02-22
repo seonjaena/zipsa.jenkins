@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    aws ecs register-task-definition --cli-input-json file://${env.WORKSPACE}/task-definition/${params.SERVICE}-${params.ENVIRONMENT}.json
+                    aws ecs register-task-definition --cli-input-json file://${env.WORKSPACE}/json/register-task-definition/${params.SERVICE}-${params.ENVIRONMENT}.json
                     """
                 }
             }
@@ -40,7 +40,17 @@ pipeline {
             steps {
                 script {
                     sh """
-                    aws ecs create-service --cli-input-json file://${env.WORKSPACE}/service-definition/${params.SERVICE}-${params.ENVIRONMENT}.json
+                    aws ecs create-service --cli-input-json file://${env.WORKSPACE}/json/create-service/${params.SERVICE}-${params.ENVIRONMENT}.json
+                    """
+                }
+            }
+        }
+
+        stage('Update Service') {
+            steps {
+                script {
+                    sh """
+                    aws ecs update-service --service ${params.SERVICE}-${params.ENVIRONMENT} --cli-input-json file://${env.WORKSPACE}/json/update-service/${params.SERVICE}-${params.ENVIRONMENT}.json
                     """
                 }
             }

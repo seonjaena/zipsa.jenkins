@@ -9,7 +9,7 @@
             "containerPort": 8080
         }
     ],
-    "desiredCount": 1,
+    "desiredCount": 2,
     "capacityProviderStrategy": [
         {
             "capacityProvider": "Infra-ECS-Cluster-zipsa-prod-3ec9de13-EC2CapacityProvider-BWrcRQLyi2i2",

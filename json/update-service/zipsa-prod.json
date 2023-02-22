@@ -1,0 +1,48 @@
+{
+    "cluster": "zipsa-prod",
+    "desiredCount": 2,
+    "taskDefinition": "zipsa-prod",
+    "capacityProviderStrategy": [
+        {
+            "capacityProvider": "Infra-ECS-Cluster-zipsa-prod-3ec9de13-EC2CapacityProvider-BWrcRQLyi2i2",
+            "weight": 1,
+            "base": 1
+        }
+    ],
+    "deploymentConfiguration": {
+        "deploymentCircuitBreaker": {
+            "enable": true,
+            "rollback": true
+        },
+        "maximumPercent": 200,
+        "minimumHealthyPercent": 100
+    },
+    "placementStrategy": [
+        {
+            "type": "spread",
+            "field": "attribute:ecs.availability-zone"
+        },
+        {
+            "type": "spread",
+            "field": "instanceId"
+        }
+    ],
+    
+
+
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-2:886516594348:targetgroup/zipsa-target/b16493f3d28c4461",
+            "containerName": "zipsa-prod",
+            "containerPort": 8080
+        }
+    ],
+    "healthCheckGracePeriodSeconds": 90,
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "ECS"
+    },
+    "enableECSManagedTags": true,
+    "propagateTags": "NONE",
+    "enableExecuteCommand": false
+}
