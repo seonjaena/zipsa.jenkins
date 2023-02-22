@@ -1,5 +1,5 @@
 {
-    "cluster": "zipsa-prod",
+    "cluster": "zipsa-production",
     "serviceName": "zipsa-prod",
     "taskDefinition": "zipsa-prod",
     "loadBalancers": [
@@ -12,7 +12,7 @@
     "desiredCount": 2,
     "capacityProviderStrategy": [
         {
-            "capacityProvider": "Infra-ECS-Cluster-zipsa-prod-3ec9de13-EC2CapacityProvider-BWrcRQLyi2i2",
+            "capacityProvider": "Infra-ECS-Cluster-zipsa-production-0c9fa807-EC2CapacityProvider-9zKu6RFwdUrc",
             "weight": 1,
             "base": 1
         }
