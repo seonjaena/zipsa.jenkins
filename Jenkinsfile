@@ -1,5 +1,3 @@
-def taskDefinitionVersion
-
 pipeline {
     agent any
 
@@ -12,8 +10,8 @@ pipeline {
 
     parameters {
         choice(name: 'ENVIRONMENT', choices: ['prod', 'dev'], description: '')
-        string(name: 'VERSION', defaultValue: '', description: '')
-        string(name: 'BRANCH_NAME', defaultValue: '', description: '')
+        choice(name: 'SERVICE', choices: ['zipsa'], description: '')
+        string(name: 'TAG_NAME', defaultValue: '', description: '')
     }
 
     stages {
@@ -21,13 +19,10 @@ pipeline {
         stage('Init') {
             steps {
                 script {
-                    taskDefinitionVersion = params.VERSION.replaceAll("\\.", "_")
                     sh """
-                    sed -i 's/image-version/${params.VERSION}/g' task-definition/zipsa-prod.json
-                    sed -i 's/family-version/${taskDefinitionVersion}/g' task-definition/zipsa-prod.json
-                    sed -i 's/branch-name/${params.BRANCH_NAME}/g' task-definition/zipsa-prod.json
-
-                    sed -i 's/family-version/${taskDefinitionVersion}/g' service-definition/zipsa-prod.json
+                    sed -i 's/tag-name/${params.TAG_NAME}/g' task-definition/zipsa-prod.json
+                    sed -i 's/family-name/${params.SERVICE}/g' task-definition/zipsa-prod.json
+                    sed -i 's/family-name/${params.SERVICE}/g' service-definition/zipsa-prod.json
                     """
                 }
             }
@@ -37,7 +32,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    aws ecs register-task-definition --cli-input-json file://${env.WORKSPACE}/task-definition/zipsa-prod.json
+                    aws ecs register-task-definition --cli-input-json file://${env.WORKSPACE}/task-definition/${params.SERVICE}-${params.ENVIRONMENT}.json
                     """
                 }
             }
@@ -48,9 +43,9 @@ pipeline {
                 script {
                     sh """
                     aws ecs create-service \
-                    --cluster zipsa-prod \
-                    --service-name zipsa-prod \
-                    --cli-input-json file://${env.WORKSPACE}/service-definition/zipsa-prod.json
+                    --cluster ${params.SERVICE}-${params.ENVIRONMENT} \
+                    --service-name ${params.SERVICE}-${params.ENVIRONMENT} \
+                    --cli-input-json file://${env.WORKSPACE}/service-definition/${params.SERVICE}-${params.ENVIRONMENT}.json
                     """
                 }
             }

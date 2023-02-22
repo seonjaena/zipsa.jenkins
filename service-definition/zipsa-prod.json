@@ -16,7 +16,7 @@
             "base": 1
         }
     ],
-    "taskDefinition": "arn:aws:ecs:ap-northeast-2:886516594348:task-definition/zipsa-prod-family-version",
+    "taskDefinition": "arn:aws:ecs:ap-northeast-2:886516594348:task-definition/zipsa-prod-family-name",
     "deploymentConfiguration": {
         "deploymentCircuitBreaker": {
             "enable": true,

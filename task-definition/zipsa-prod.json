@@ -2,7 +2,7 @@
     "containerDefinitions": [
         {
             "name": "zipsa-prod",
-            "image": "886516594348.dkr.ecr.ap-northeast-2.amazonaws.com/ecr-free:image-version-branch-name",
+            "image": "886516594348.dkr.ecr.ap-northeast-2.amazonaws.com/ecr-free:tag-name",
             "cpu": 614,
             "memory": 614,
             "portMappings": [
@@ -27,7 +27,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/zipsa-prod-family-version",
+                    "awslogs-group": "/ecs/zipsa-prod-family-name",
                     "awslogs-region": "ap-northeast-2",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -35,7 +35,7 @@
             "healthCheck": {
                 "command": [
                     "CMD-SHELL",
-                    "curl -H 'Authorization: Bearer' http://localhost:8080/api/healthcheck/task || exit 1"
+                    " || exit 1"
                 ],
                 "interval": 30,
                 "timeout": 10,
@@ -44,7 +44,7 @@
             }
         }
     ],
-    "family": "zipsa-prod-family-version",
+    "family": "zipsa-prod-family-name",
     "taskRoleArn": "arn:aws:iam::886516594348:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::886516594348:role/ecsTaskExecutionRole",
     "networkMode": "bridge",
