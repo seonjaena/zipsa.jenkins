@@ -1,5 +1,7 @@
 {
+    "cluster": "zipsa-prod",
     "serviceName": "zipsa-prod",
+    "taskDefinition": "zipsa-prod",
     "loadBalancers": [
         {
             "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-2:886516594348:targetgroup/zipsa-target/b16493f3d28c4461",
@@ -7,7 +9,6 @@
             "containerPort": 8080
         }
     ],
-    "serviceRegistries": [],
     "desiredCount": 1,
     "capacityProviderStrategy": [
         {
@@ -16,7 +17,6 @@
             "base": 1
         }
     ],
-    "taskDefinition": "arn:aws:ecs:ap-northeast-2:886516594348:task-definition/zipsa-prod",
     "deploymentConfiguration": {
         "deploymentCircuitBreaker": {
             "enable": true,
@@ -25,7 +25,6 @@
         "maximumPercent": 200,
         "minimumHealthyPercent": 100
     },
-    "placementConstraints": [],
     "placementStrategy": [
         {
             "type": "spread",
@@ -36,7 +35,7 @@
             "field": "instanceId"
         }
     ],
-    "healthCheckGracePeriodSeconds": 400,
+    "healthCheckGracePeriodSeconds": 90,
     "schedulingStrategy": "REPLICA",
     "deploymentController": {
         "type": "ECS"

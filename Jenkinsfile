@@ -40,10 +40,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    aws ecs create-service \
-                    --cluster ${params.SERVICE}-${params.ENVIRONMENT} \
-                    --service-name ${params.SERVICE}-${params.ENVIRONMENT} \
-                    --cli-input-json file://${env.WORKSPACE}/service-definition/${params.SERVICE}-${params.ENVIRONMENT}.json
+                    aws ecs create-service --cli-input-json file://${env.WORKSPACE}/service-definition/${params.SERVICE}-${params.ENVIRONMENT}.json
                     """
                 }
             }
