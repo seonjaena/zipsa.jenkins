@@ -21,8 +21,6 @@ pipeline {
                 script {
                     sh """
                     sed -i 's/tag-name/${params.TAG_NAME}/g' task-definition/zipsa-prod.json
-                    sed -i 's/family-name/${params.SERVICE}/g' task-definition/zipsa-prod.json
-                    sed -i 's/family-name/${params.SERVICE}/g' service-definition/zipsa-prod.json
                     """
                 }
             }

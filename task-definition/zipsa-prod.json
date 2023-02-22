@@ -27,7 +27,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/zipsa-prod-family-name",
+                    "awslogs-group": "/ecs/zipsa-prod",
                     "awslogs-region": "ap-northeast-2",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -35,7 +35,7 @@
             "healthCheck": {
                 "command": [
                     "CMD-SHELL",
-                    " || exit 1"
+                    "./ecs-health-check.sh || exit 1"
                 ],
                 "interval": 30,
                 "timeout": 10,
@@ -44,7 +44,7 @@
             }
         }
     ],
-    "family": "zipsa-prod-family-name",
+    "family": "zipsa-prod",
     "taskRoleArn": "arn:aws:iam::886516594348:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::886516594348:role/ecsTaskExecutionRole",
     "networkMode": "bridge",
