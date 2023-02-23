@@ -38,10 +38,6 @@
         }
     ],
     "healthCheckGracePeriodSeconds": 90,
-    "schedulingStrategy": "REPLICA",
-    "deploymentController": {
-        "type": "ECS"
-    },
     "enableECSManagedTags": true,
     "propagateTags": "NONE",
     "enableExecuteCommand": false
