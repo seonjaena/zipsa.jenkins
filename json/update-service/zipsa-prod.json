@@ -6,7 +6,7 @@
         {
             "capacityProvider": "Infra-ECS-Cluster-zipsa-production-0c9fa807-EC2CapacityProvider-9zKu6RFwdUrc",
             "weight": 1,
-            "base": 1
+            "base": 2
         }
     ],
     "deploymentConfiguration": {
