@@ -7,11 +7,11 @@ import groovy.transform.Field
 @Field String ws
 
 def executeCommand(String command) {
-    ws = env.WORKSPACE
     sh(script: command)
 }
 
 def init(String tagName) {
+    ws = env.WORKSPACE
     executeCommand("sed -i 's/tag-name/${tagName}/g' ${ws}/${jsonDir}/register-task-definition/zipsa-prod.json")
 }
 
