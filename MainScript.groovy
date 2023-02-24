@@ -30,3 +30,5 @@ def rollingUpdate(String service, String environment) {
 def canaryUpdate(String service, String environment) {
     executeCommand("aws ecs update-service --service ${service}-${environment} --cli-input-json file://${ws}/${jsonDir}/update-service/canary/${service}-${environment}.json")
 }
+
+return this
