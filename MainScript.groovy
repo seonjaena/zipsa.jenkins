@@ -1,5 +1,6 @@
 #!/bin/groovy
 
+import jenkins.model.Jenkins
 import groovy.transform.Field
 
 @Field String jsonDir = "json"
