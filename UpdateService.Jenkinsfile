@@ -6,10 +6,9 @@ pipeline {
     parameters {
         choice(name: 'ENVIRONMENT', choices: ['prod', 'dev'], description: '')
         choice(name: 'SERVICE', choices: ['zipsa'], description: '')
-        string(name: 'TAG_NAME', defaultValue: '', description: '')
 
         booleanParam(name: 'ROLLING_UPDATE_SERVICE', defaultValue: true, description: '')
-        booleanParam(name: 'CANARY_UPDATE_SERVICE', defaultValue: true, description: '')
+        booleanParam(name: 'CANARY_UPDATE_SERVICE', defaultValue: false, description: '')
     }
 
     stages {
@@ -18,7 +17,7 @@ pipeline {
             steps {
                 script {
                     ms = load "MainScript.groovy"
-                    ms.init(params.TAG_NAME)
+                    ms.init("")
                 }
             }
         }
