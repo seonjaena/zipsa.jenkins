@@ -10,8 +10,6 @@ pipeline {
 
         booleanParam(name: 'REGISTER_TASK_DEFINITION', defaultValue: true, description: '')
         booleanParam(name: 'CREATE_NEW_SERVICE', defaultValue: false, description: '')
-        booleanParam(name: 'ROLLING_UPDATE_SERVICE', defaultValue: true, description: '')
-        booleanParam(name: 'CANARY_UPDATE_SERVICE', defaultValue: true, description: '')
     }
 
     stages {
