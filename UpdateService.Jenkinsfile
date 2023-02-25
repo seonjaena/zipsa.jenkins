@@ -34,5 +34,18 @@ pipeline {
                 }
             }
         }
+
+        stage('Canary Update Service') {
+            when {
+                expression {
+                    params.CANARY_UPDATE_SERVICE
+                }
+            }
+            steps {
+                script {
+                    echo ""
+                }
+            }
+        }
     }
 }
